@@ -1,5 +1,5 @@
 id: notebook-to-osl
-status: idea-captured
+status: drafting
 working_title: "From Apprenticeship Notes to Operator Strategy Models: Situated Elicitation for Digital Twin Development"
 alternative_titles:
   - "Notebook-to-OSL: Capturing Operator Strategies during CNC Operator Training"
@@ -35,9 +35,14 @@ research_questions:
   - "How can situated operator training be used to elicit operator strategies for Digital Twin development?"
   - "How can raw field notes from CNC operator training be transformed into structured OSL candidate fragments?"
   - "What annotation categories are needed to preserve cues, actions, rationale, uncertainty, context, and validation needs?"
+manuscript:
+  path: papers/notebook-to-osl/manuscript/main.tex
+  format: LaTeX
+  status: first-draft
 needed_next:
-  - define annotation schema
-  - collect seed literature
-  - create prototype note workflow
-  - write illustrative CNC example
+  - verify all references and DOIs
+  - replace placeholder co-author information
+  - add empirical material from actual or simulated CNC training
+  - add operator/domain-expert validation results
   - decide what empirical material can be used without exposing sensitive industrial data
+  - align OSL syntax with the separate OSL paper when that language stabilizes
