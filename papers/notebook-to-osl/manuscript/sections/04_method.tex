@@ -1,0 +1,60 @@
+\section{Notebook-to-OSL method}
+\label{sec:method}
+
+Notebook-to-OSL is a workflow for capturing operator strategies during situated training and preparing them for later formalisation. Figure~\ref{fig:notebook-to-osl-workflow} summarises the workflow.
+
+\begin{figure}[htbp]
+    \centering
+    \input{figures/workflow.tikz}
+    \caption{Notebook-to-OSL workflow from situated training to candidate strategy model.}
+    \label{fig:notebook-to-osl-workflow}
+\end{figure}
+
+The method is organised into seven phases. Table~\ref{tab:workflow} summarises the phases, outputs, and main risks.
+
+\begin{table}[htbp]
+\centering
+\caption{Notebook-to-OSL workflow phases.}
+\label{tab:workflow}
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.28\textwidth}X}
+\toprule
+Phase & Output & Main risk \\
+\midrule
+1. Prepare & Training focus and consent boundaries & Session becomes too broad or exposes sensitive information. \\
+2. Situated training & Shared understanding of work context & Researcher may misunderstand embodied or implicit actions. \\
+3. Raw note capture & Short laptop notes with timestamps & Notes may be incomplete or ambiguous. \\
+4. Note selection & Relevant candidate notes & Researcher may select only obvious statements. \\
+5. Annotation & Structured strategy fragments & Premature formalisation may erase uncertainty. \\
+6. Validation & Confirmed or revised fragments & Operator feedback may be unavailable or delayed. \\
+7. OSL candidate generation & Candidate language fragments & The generated candidate may overstate what was actually observed. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Phase 1: Prepare the training situation}
+
+Before the session, the researcher defines the scope of the training. The scope may be a machine, operation type, monitoring task, recurring fault, quality concern, or decision point. The operator should know that the goal is not to evaluate their performance, but to understand how they interpret and handle the process. If industrial confidentiality applies, the researcher must define what may be written down, what must be anonymised, and what must not be stored.
+
+\subsection{Phase 2: Participate in situated training}
+
+During the session, the operator teaches the researcher how the work is performed and interpreted. The researcher should ask short clarification questions, but should avoid turning the session into a formal interview. The central value of the situation is that explanations occur while the operator is pointing to artefacts, reacting to machine behaviour, or describing concrete situations.
+
+\subsection{Phase 3: Capture raw notes}
+
+The researcher writes short notes on a laptop. The note interface should be simple: a text box, timestamp, optional tag, and save action may be sufficient. The raw note should preserve the operator's phrasing when possible. The researcher should avoid forcing each note into a formal schema during the session because this may interrupt the operator and bias what is captured.
+
+\subsection{Phase 4: Select candidate notes}
+
+After the session, the researcher reviews the raw note set and selects notes that appear relevant to operator strategy. A note is relevant if it describes a cue, interpretation, decision, action, exception, rationale, risk, validation need, or responsibility. Notes that only describe background information may still be useful, but they should not be forced into the strategy schema.
+
+\subsection{Phase 5: Annotate strategy fragments}
+
+Each selected note is annotated using the schema in Section~\ref{sec:schema}. The researcher should explicitly mark uncertainty, exceptions, and validation needs. This is important because the aim is not to convert every operator statement into a rule. Many useful operator statements are probabilistic, experiential, or dependent on material, machine state, tooling, or production context.
+
+\subsection{Phase 6: Validate with operator or domain expert}
+
+The annotated fragment should be reviewed with the operator or another domain expert. Validation can confirm the interpretation, correct it, narrow its applicability, or reject it. The validation step is especially important because the researcher is a learner in the training situation and may misunderstand what is routine, exceptional, or context-specific.
+
+\subsection{Phase 7: Generate OSL candidates}
+
+Validated fragments can be transformed into OSL candidates. In this paper, an OSL candidate is a semi-formal representation that captures the core relation between cue, context, interpretation, action, and validation requirement. It is not yet a complete executable model. The candidate exists to support later language design, SysML mapping, Digital Twin requirements, or decision-support implementation.
