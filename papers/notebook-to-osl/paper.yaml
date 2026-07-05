@@ -1,6 +1,6 @@
 id: notebook-to-osl
 status: drafting
-working_title: "From Apprenticeship Notes to Operator Strategy Models: Situated Elicitation for Digital Twin Development"
+working_title: "From Situated Field Notes to Operator Strategy Models: Eliciting Manufacturing Knowledge for Digital Twin Development"
 alternative_titles:
   - "Notebook-to-OSL: Capturing Operator Strategies during CNC Operator Training"
   - "From Situated Operator Training to Digital Twin Knowledge Models"
@@ -9,10 +9,20 @@ short_name: Notebook-to-OSL
 paper_type: journal-first-method-paper
 primary_domain: Digital Twins for manufacturing
 case_context: CNC operator training
+method_positioning: hybrid elicitation-and-transformation method
+theoretical_foundations:
+  - contextual inquiry
+  - situated learning
+  - cognitive apprenticeship
+  - cognitive task analysis
+  - requirements engineering
+  - model-based systems engineering
+  - semantic Digital Twin knowledge representation
 main_contribution:
-  - situated elicitation method
+  - literature-grounded situated elicitation workflow
   - note-to-strategy annotation schema
-  - workflow from raw notes to OSL candidates
+  - CTA-style clarification and operator validation protocol
+  - traceable transformation from raw notes to model-ready candidates
   - illustrative CNC case
 primary_target_venue: Advanced Engineering Informatics
 backup_venues:
@@ -25,23 +35,26 @@ keywords:
   - Digital Twin
   - operator strategies
   - situated elicitation
-  - apprenticeship-based learning
+  - contextual inquiry
+  - cognitive task analysis
   - CNC manufacturing
   - knowledge capture
   - requirements elicitation
+  - model-based systems engineering
   - Operator Strategy Language
   - human-in-the-loop systems
 research_questions:
-  - "How can situated operator training be used to elicit operator strategies for Digital Twin development?"
-  - "How can raw field notes from CNC operator training be transformed into structured OSL candidate fragments?"
-  - "What annotation categories are needed to preserve cues, actions, rationale, uncertainty, context, and validation needs?"
+  - "How can situated operator training be used as an elicitation setting for capturing operator strategies in Digital Twin development?"
+  - "How can low-friction digital field notes from CNC operator training be transformed into traceable, validated, model-ready operator-strategy fragments?"
+  - "Which annotation categories are needed to preserve context, cue interpretation, action logic, uncertainty, rationale, risk, responsibility, and validation needs during that transformation?"
 manuscript:
   path: papers/notebook-to-osl/manuscript/main.tex
   format: LaTeX
-  status: first-draft
+  status: strengthened-first-draft
 needed_next:
-  - verify all references and DOIs
+  - compile LaTeX and fix any errors from the expanded references and tables
   - replace placeholder co-author information
+  - verify all references and DOIs manually before submission
   - add empirical material from actual or simulated CNC training
   - add operator/domain-expert validation results
   - decide what empirical material can be used without exposing sensitive industrial data
