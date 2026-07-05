@@ -3,21 +3,27 @@
 
 \subsection{Positioning the contribution}
 
-The proposed method contributes an intermediate knowledge layer for Digital Twin development. It does not replace machine data, formal modelling, interviews, or workshops. Instead, it addresses a specific weakness in early-stage Digital Twin work: the risk that operator reasoning is either left informal or translated too quickly into technical requirements. Notebook-to-OSL keeps the raw note, the structured interpretation, and the candidate model fragment connected.
+The proposed method contributes an intermediate knowledge layer for Digital Twin development. It does not replace machine data, formal modelling, interviews, workshops, or contextual inquiry. Instead, it combines selected strengths from these traditions to address a specific weakness in early-stage Digital Twin work: the risk that operator reasoning is either left informal or translated too quickly into technical requirements. Notebook-to-OSL keeps the raw note, the structured interpretation, the validation outcome, and the candidate model fragment connected.
 
-This positioning is important for engineering informatics. The contribution is not the laptop note application alone. A simple note tool has little research value by itself. The research value lies in the structured transformation from situated operator explanation to model-ready strategy fragment. This transformation supports knowledge-intensive engineering tasks by making operator strategies more explicit, reviewable, and reusable.
+This positioning is important for engineering informatics. The contribution is not the note-taking application alone. A simple note tool has little research value by itself. The research value lies in the structured transformation from situated operator explanation to traceable, validated, model-ready strategy fragment. This transformation supports knowledge-intensive engineering tasks by making operator strategies explicit, reviewable, reusable, and available for later modelling.
+
+\subsection{Why a hybrid method is needed}
+
+The literature review shows that no single existing method fully covers the problem. Contextual inquiry is strong for observing work in context, but weak on downstream formalisation. Cognitive task analysis is strong for eliciting expert cues and decisions, but can become intrusive if applied during live training. Requirements engineering and MBSE are strong on traceability, status, rationale, and model transformation, but they typically operate after stakeholder knowledge has already been elicited. Semantic Digital Twin work is strong on reusable knowledge structures, but it seldom explains how shop-floor operator reasoning enters those structures.
+
+Notebook-to-OSL is therefore positioned as a method integration. It uses contextual/apprenticeship capture as the front end, CTA-style probing as the clarification layer, and requirements/MBSE principles as the back end. This makes the method more defensible than presenting it as an ad hoc note workflow.
 
 \subsection{Implications for Digital Twin development}
 
-The method has three implications for Digital Twin development. First, it treats operator strategies as design material. Operators are not only end users of dashboards or validators of alarms; they are sources of strategy knowledge that can shape the Digital Twin's monitoring logic, explanation needs, and human-in-the-loop decision points.
+The method has three implications for Digital Twin development. First, it treats operator strategies as design material. Operators are not only end users of dashboards or validators of alarms; they are sources of strategy knowledge that can shape monitoring logic, explanation needs, escalation paths, confidence presentation, and human-in-the-loop decision points.
 
-Second, the method separates capture from formalisation. This separation reduces the risk of forcing operator statements into premature models. Raw notes can remain messy, while annotated fragments gradually introduce structure. This is particularly useful when the goal is to build formal representations later, such as OSL or SysML-based models.
+Second, the method separates capture from formalisation. This separation reduces the risk of forcing operator statements into premature models. Raw notes can remain messy, while annotated fragments gradually introduce structure. This is particularly useful when the goal is to build formal representations later, such as OSL, EARS-like requirements, SysML v2 elements, rules, or knowledge-graph structures.
 
-Third, the method makes validation explicit. Operator knowledge is not simply extracted and converted. It is interpreted by a researcher and therefore requires review. The status model distinguishes between raw, annotated, needs-validation, validated, formalised, and discarded notes. This creates a transparent pipeline from field observation to modelling artefact.
+Third, the method makes validation explicit. Operator knowledge is not simply extracted and converted. It is interpreted by a researcher and therefore requires review. The status model distinguishes between raw, selected, annotated, needs-clarification, needs-validation, accepted, corrected, narrowed, rejected, sensitive, and model-ready fragments. This creates a transparent pipeline from field observation to modelling artefact.
 
 \subsection{Evaluation strategy}
 
-A strong journal version should evaluate the method in at least three ways. First, it should report descriptive transformation metrics: number of raw notes, selected notes, annotated fragments, validated fragments, rejected fragments, and OSL candidates. Second, it should include qualitative validation by operators or domain experts. Third, it should compare what the method captures against at least one alternative elicitation mode, such as a conventional interview or workshop.
+A strong journal version should evaluate the method in at least three ways. First, it should report descriptive transformation metrics: raw notes, selected notes, annotated fragments, clarified fragments, accepted fragments, corrected fragments, narrowed fragments, rejected fragments, sensitive fragments, and model-ready candidates. Second, it should include qualitative validation by operators or domain experts. Third, it should compare what the method captures against at least one alternative elicitation mode, such as a conventional interview or workshop.
 
 Possible evaluation questions include:
 
@@ -25,19 +31,23 @@ Possible evaluation questions include:
     \item Which operator-strategy elements are captured during situated training but not during interview?
     \item Which annotation fields are most often used, missing, or difficult to fill?
     \item How often does operator validation change the researcher's interpretation?
-    \item Which fragments are useful for later OSL modelling, and which remain too ambiguous?
+    \item Which fragments become model-ready, and which remain too ambiguous?
+    \item Which fragments are marked sensitive or unsuitable for publication?
+    \item Which downstream representation is most appropriate for each fragment: requirement, OSL candidate, rule, SysML element, explanation need, validation gate, or knowledge-graph relation?
 \end{itemize}
+
+The evaluation should avoid overclaiming. A pilot can demonstrate feasibility and analytical value, but it cannot prove generalisability across all CNC operations or manufacturing domains. Stronger claims require multiple operators, tasks, or sites.
 
 \subsection{Limitations}
 
-The method has several limitations. First, situated training depends on the operator's ability and willingness to explain practice while working. Second, the researcher may misunderstand cues because they are still learning the process. Third, note-taking may miss embodied actions, gestures, or timing that are difficult to capture in text. Fourth, the method may privilege what can be verbalised and written down, even though some operator knowledge remains tacit. Fifth, industrial confidentiality can restrict what may be stored, quoted, or published.
+The method has several limitations. First, situated training depends on the operator's ability and willingness to explain practice while working. Second, the researcher may misunderstand cues because they are still learning the process. Third, note-taking may miss embodied actions, gestures, timing, or sensory detail that are difficult to capture in text. Fourth, the method may privilege what can be verbalised and written down, even though some operator knowledge remains tacit. Fifth, industrial confidentiality can restrict what may be stored, quoted, or published. Sixth, model-ready candidates may look more precise than the source material justifies if uncertainty and validation status are not preserved.
 
-These limitations do not invalidate the method, but they require careful study design. The researcher should maintain traceability, mark uncertainty, seek validation, and avoid presenting unvalidated fragments as established process knowledge.
+These limitations do not invalidate the method, but they require careful study design. The researcher should maintain traceability, mark uncertainty, seek validation, preserve raw notes, record corrections, and avoid presenting unvalidated fragments as established process knowledge.
 
 \subsection{Threats to validity}
 
-The main threat to construct validity is whether the annotation schema truly captures operator strategies rather than merely classifying notes. This can be addressed by comparing annotated fragments with operator feedback and later modelling needs. The main threat to internal validity is researcher interpretation bias. This can be addressed through validation sessions and, where possible, independent coding. The main threat to external validity is that one CNC setting may not generalise to other machines, materials, or manufacturing domains. This can be addressed by applying the workflow across multiple operations or cases.
+The main threat to construct validity is whether the annotation schema truly captures operator strategies rather than merely classifying notes. This can be addressed by comparing annotated fragments with operator feedback, downstream modelling needs, and independent coding where possible. The main threat to internal validity is researcher interpretation bias. This can be addressed through validation sessions, reflection logs, and explicit status categories for corrected, narrowed, and rejected fragments. The main threat to external validity is that one CNC setting may not generalise to other machines, materials, operators, or manufacturing domains. This can be addressed by applying the workflow across multiple operations or cases. The main threat to conclusion validity is overclaiming from a small pilot; this can be mitigated by reporting transformation metrics and keeping claims at the level of feasibility, usefulness, and methodological clarity.
 
 \subsection{Ethical and confidentiality considerations}
 
-The method should avoid storing sensitive industrial information unless permission is explicit. Raw notes may contain proprietary details, customer information, machine programs, or identifiable operator statements. A research repository should therefore distinguish between private empirical material and publishable examples. Sanitised fragments may be used in papers, while raw notes should remain protected according to agreements with the industrial partner.
+The method should avoid storing sensitive industrial information unless permission is explicit. Raw notes may contain proprietary details, customer information, machine programs, identifiable operator statements, or commercially sensitive process parameters. A research repository should therefore distinguish between private empirical material and publishable examples. Sanitised fragments may be used in papers, while raw notes should remain protected according to agreements with the industrial partner. The status value \texttt{sensitive} is included so that confidentiality is handled as part of the knowledge workflow rather than as an afterthought.
