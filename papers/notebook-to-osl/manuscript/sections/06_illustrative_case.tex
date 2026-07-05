@@ -1,0 +1,92 @@
+\section{Illustrative CNC case}
+\label{sec:case}
+
+This section illustrates how a raw note can be transformed into an annotated strategy fragment and then into an OSL candidate. The example is intentionally generic and does not include proprietary production parameters, customer information, machine programs, or identifiable operator statements.
+
+\subsection{Training situation}
+
+Assume that a researcher is being trained by an experienced CNC operator. The operator explains how they monitor the cutting process during an operation. The researcher writes short notes on a laptop while standing near the machine and observing the operator's explanations. One note concerns how sound may indicate tool wear.
+
+\subsection{Raw note}
+
+The raw note is short and incomplete, as notes often are during situated work:
+
+\begin{quote}
+\emph{Sharper cutting sound can mean the tool is starting to wear, but not for every material. If it continues, operator checks tool before quality gets bad.}
+\end{quote}
+
+This note is not yet a requirement or rule. It contains a cue, possible interpretation, context limitation, action, and rationale. It also contains uncertainty because the cue is material-dependent.
+
+\subsection{Annotated fragment}
+
+Table~\ref{tab:annotated-fragment} shows a possible annotation of the note.
+
+\begin{table}[htbp]
+\centering
+\caption{Example annotation of a raw training note.}
+\label{tab:annotated-fragment}
+\begin{tabularx}{\textwidth}{p{0.27\textwidth}X}
+\toprule
+Field & Value \\
+\midrule
+\texttt{note\_id} & N-001 \\
+\texttt{raw\_text} & Sharper cutting sound can mean the tool is starting to wear, but not for every material. \\
+\texttt{cue} & Sharper or brighter cutting sound. \\
+\texttt{condition} & During cutting; depends on material and operation. \\
+\texttt{interpretation} & Possible tool wear. \\
+\texttt{action} & Continue monitoring; inspect tool if the sound persists. \\
+\texttt{rationale} & Early inspection may prevent poor surface finish or tool failure. \\
+\texttt{exception} & The sound may be normal for some materials or operations. \\
+\texttt{uncertainty} & Cue is experience-based and not sufficient alone. \\
+\texttt{risk} & Poor surface quality, scrap, or tool damage. \\
+\texttt{validation\_need} & Confirm material dependency and action threshold with operator. \\
+\texttt{responsible\_actor} & Machine operator. \\
+\texttt{candidate\_osl\_type} & Strategy fragment. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{OSL candidate}
+
+The annotated fragment can then be transformed into an OSL candidate. The syntax below is illustrative only; it is not a final OSL specification.
+
+\begin{lstlisting}[style=osl,caption={Illustrative OSL candidate generated from the annotated note.},label={lst:osl-candidate}]
+strategy ToolWearSoundMonitoring {
+  cue: sharper_cutting_sound
+  context: material_dependent_cutting_operation
+  interpretation: possible_tool_wear
+  confidence: uncertain
+  recommended_action: inspect_tool_if_sound_persists
+  rationale: prevent_surface_quality_loss_or_tool_damage
+  exception: sound_may_be_normal_for_some_materials
+  validation_required: operator_confirmation
+  responsible_actor: machine_operator
+}
+\end{lstlisting}
+
+The OSL candidate preserves the structure needed for later modelling while remaining traceable to the original note. It can support several later Digital Twin artefacts. The cue may inform dashboard design or sensor interpretation. The action may inform a recommendation rule. The uncertainty field may inform confidence presentation. The validation requirement may define a human-in-the-loop gate.
+
+\subsection{Additional candidate note types}
+
+The same workflow can be applied to other types of notes. Table~\ref{tab:note-types} lists examples.
+
+\begin{table}[htbp]
+\centering
+\caption{Examples of note types and possible OSL targets.}
+\label{tab:note-types}
+\begin{tabularx}{\textwidth}{p{0.30\textwidth}p{0.35\textwidth}X}
+\toprule
+Raw note type & Example content & Possible OSL target \\
+\midrule
+Abnormal state cue & Machine sound, vibration, alarm pattern, visual mark. & Cue or monitoring strategy. \\
+Conditional decision & Stop only if the deviation persists or appears during a critical operation. & Rule or intervention strategy. \\
+Exception & Behaviour is acceptable for one material but not another. & Context condition or exception. \\
+Trust concern & Operator would not trust an automatic alarm without seeing trend history. & Validation gate or explanation requirement. \\
+Escalation path & Ask experienced operator or maintenance when local inspection is inconclusive. & Escalation strategy. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{From example to evaluation}
+
+In a full empirical study, the example transformation should be repeated across a larger set of notes. The analysis should report how many notes were captured, how many were selected, how many became annotated fragments, how many required validation, and how many were rejected. Such reporting would make the method auditable and would support comparison with interviews or workshops.
