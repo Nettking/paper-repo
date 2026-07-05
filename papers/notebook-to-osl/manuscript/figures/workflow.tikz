@@ -1,0 +1,21 @@
+\begin{tikzpicture}[
+  node distance=9mm and 8mm,
+  box/.style={draw, rounded corners, align=center, minimum width=30mm, minimum height=9mm, font=\small},
+  arrow/.style={-{Latex[length=2mm]}, thick}
+]
+
+\node[box] (training) {Situated\\operator training};
+\node[box, right=of training] (raw) {Raw laptop\\notes};
+\node[box, right=of raw] (annotated) {Annotated\\strategy fragments};
+\node[box, right=of annotated] (validated) {Operator\\validation};
+\node[box, right=of validated] (osl) {OSL candidate\\fragments};
+
+\draw[arrow] (training) -- (raw);
+\draw[arrow] (raw) -- (annotated);
+\draw[arrow] (annotated) -- (validated);
+\draw[arrow] (validated) -- (osl);
+
+\node[box, below=of annotated, minimum width=38mm] (schema) {Annotation schema:\\cue, context, action, rationale,\\uncertainty, responsibility};
+\draw[arrow] (schema) -- (annotated);
+
+\end{tikzpicture}
