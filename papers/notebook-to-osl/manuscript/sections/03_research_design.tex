@@ -1,0 +1,47 @@
+\section{Research design and scope}
+\label{sec:research-design}
+
+This paper is written as a method paper. The proposed method is intended to support early-stage Digital Twin development in manufacturing contexts where operator knowledge is important but not yet formalised. The method should be evaluated in future work through situated training sessions, annotated note sets, operator validation, and comparison with other elicitation methods. This first draft therefore distinguishes between the proposed workflow, the intended empirical material, and the illustrative example.
+
+\subsection{Design objective}
+
+The design objective is to support the transformation of situated training notes into structured operator-strategy fragments. The transformation should satisfy four requirements:
+
+\begin{enumerate}[label=R\arabic*.]
+    \item \textbf{Low friction during training.} The researcher must be able to capture notes without interrupting the operator's explanation or the flow of the training situation.
+    \item \textbf{Traceability.} Each structured fragment should remain linked to its raw note and, where possible, to time, context, and validation status.
+    \item \textbf{Preservation of uncertainty.} The method should not force uncertain, context-dependent, or disputed observations into overly precise rules.
+    \item \textbf{Model-readiness.} The annotated fragment should contain enough structure to support later transformation into OSL or other Digital Twin modelling artefacts.
+\end{enumerate}
+
+\subsection{Unit of analysis}
+
+The primary unit of analysis is the \emph{operator-strategy fragment}. A fragment is derived from one or more raw notes and contains the relation between an operational cue, context, interpretation, possible action, rationale, and validation state. A fragment may later become a strategy, rule, exception, validation gate, dashboard requirement, or modelling element.
+
+\subsection{Expected empirical material}
+
+A complete journal version should include empirical material from at least one situated training study. Table~\ref{tab:empirical-material} summarises the minimum material needed.
+
+\begin{table}[htbp]
+\centering
+\caption{Minimum empirical material for a full study.}
+\label{tab:empirical-material}
+\begin{tabularx}{\textwidth}{p{0.28\textwidth}X}
+\toprule
+Material & Purpose \\
+\midrule
+Training session description & Establish the industrial context, training setting, and operator role. \\
+Raw note set & Provide the unstructured material captured during training. \\
+Annotated note set & Show how raw notes are transformed using the schema. \\
+OSL candidate fragments & Demonstrate model-readiness and transformation potential. \\
+Validation feedback & Check whether the researcher's interpretation matches operator intent. \\
+Reflection log & Document researcher bias, uncertainty, and methodological limitations. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Scope and boundaries}
+
+The paper does not claim to deliver a complete Operator Strategy Language. It also does not claim to implement a complete Digital Twin. Instead, it focuses on the missing intermediate step between situated operator learning and formal modelling. This boundary is important because the research risk is otherwise too large: attempting to deliver field method, software tool, full language, and Digital Twin implementation in the same paper would weaken the contribution.
+
+The intended contribution is therefore methodological. The tool is treated as a research instrument that supports the method. The OSL candidate is treated as a target representation that demonstrates why the annotation is useful.
