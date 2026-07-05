@@ -1,7 +1,7 @@
 \begin{tikzpicture}[
-  node distance=7mm,
-  box/.style={draw, rounded corners, align=center, minimum width=55mm, minimum height=8mm, font=\small},
-  side/.style={draw, rounded corners, align=center, minimum width=42mm, minimum height=8mm, font=\small},
+  node distance=3.5mm,
+  box/.style={draw, rounded corners, align=center, minimum width=48mm, minimum height=6mm, font=\scriptsize},
+  side/.style={draw, rounded corners, align=center, minimum width=37mm, minimum height=6mm, font=\scriptsize},
   arrow/.style={-{Latex[length=2mm]}, thick}
 ]
 
@@ -22,7 +22,7 @@
 \draw[arrow] (clarify) -- (validate);
 \draw[arrow] (validate) -- (model);
 
-\node[side, right=11mm of annotate] (trace) {Traceability:\\source, rationale, status,\\uncertainty, responsibility};
+\node[side, right=7mm of annotate] (trace) {Traceability:\\source, rationale, status,\\uncertainty, responsibility};
 \draw[arrow] (trace) -- (annotate);
 \draw[arrow] (trace) |- (model);
 
