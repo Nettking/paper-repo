@@ -1,0 +1,43 @@
+id: notebook-to-osl
+status: idea-captured
+working_title: "From Apprenticeship Notes to Operator Strategy Models: Situated Elicitation for Digital Twin Development"
+alternative_titles:
+  - "Notebook-to-OSL: Capturing Operator Strategies during CNC Operator Training"
+  - "From Situated Operator Training to Digital Twin Knowledge Models"
+  - "Capturing Operator Strategies for Human-in-the-Loop Digital Twins"
+short_name: Notebook-to-OSL
+paper_type: journal-first-method-paper
+primary_domain: Digital Twins for manufacturing
+case_context: CNC operator training
+main_contribution:
+  - situated elicitation method
+  - note-to-strategy annotation schema
+  - workflow from raw notes to OSL candidates
+  - illustrative CNC case
+primary_target_venue: Advanced Engineering Informatics
+backup_venues:
+  - Computers in Industry
+  - Journal of Manufacturing Systems
+  - Requirements Engineering
+  - International Journal of Human-Computer Studies
+fallback_format: workshop paper
+keywords:
+  - Digital Twin
+  - operator strategies
+  - situated elicitation
+  - apprenticeship-based learning
+  - CNC manufacturing
+  - knowledge capture
+  - requirements elicitation
+  - Operator Strategy Language
+  - human-in-the-loop systems
+research_questions:
+  - "How can situated operator training be used to elicit operator strategies for Digital Twin development?"
+  - "How can raw field notes from CNC operator training be transformed into structured OSL candidate fragments?"
+  - "What annotation categories are needed to preserve cues, actions, rationale, uncertainty, context, and validation needs?"
+needed_next:
+  - define annotation schema
+  - collect seed literature
+  - create prototype note workflow
+  - write illustrative CNC example
+  - decide what empirical material can be used without exposing sensitive industrial data
