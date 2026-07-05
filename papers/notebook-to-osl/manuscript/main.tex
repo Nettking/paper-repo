@@ -6,18 +6,29 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{array}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{hyperref}
 \usetikzlibrary{arrows.meta,positioning,fit}
+\emergencystretch=2em
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
 
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
   citecolor=black,
   urlcolor=black
+}
+\pdfstringdefDisableCommands{%
+  \def\corref#1{}%
+  \def\cortext#1#2{}%
+  \def\cnotenum#1{}%
 }
 
 \lstdefinestyle{osl}{
@@ -40,8 +51,7 @@
 \ead{nks.rap@gmail.com}
 \cortext[cor1]{Corresponding author.}
 
-\author[hiost]{Co-author Name}
-
+% TODO: Add co-authors before submission.
 \address[hiost]{Østfold University College, Halden, Norway}
 
 \begin{abstract}
