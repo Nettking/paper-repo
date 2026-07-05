@@ -1,21 +1,29 @@
 \begin{tikzpicture}[
-  node distance=9mm and 8mm,
-  box/.style={draw, rounded corners, align=center, minimum width=30mm, minimum height=9mm, font=\small},
+  node distance=7mm,
+  box/.style={draw, rounded corners, align=center, minimum width=55mm, minimum height=8mm, font=\small},
+  side/.style={draw, rounded corners, align=center, minimum width=42mm, minimum height=8mm, font=\small},
   arrow/.style={-{Latex[length=2mm]}, thick}
 ]
 
-\node[box] (training) {Situated\\operator training};
-\node[box, right=of training] (raw) {Raw laptop\\notes};
-\node[box, right=of raw] (annotated) {Annotated\\strategy fragments};
-\node[box, right=of annotated] (validated) {Operator\\validation};
-\node[box, right=of validated] (osl) {OSL candidate\\fragments};
+\node[box] (scope) {1. Scope and consent\\training focus, roles, confidentiality};
+\node[box, below=of scope] (training) {2. Situated operator training\\contextual/apprenticeship capture};
+\node[box, below=of training] (raw) {3. Low-friction digital field notes\\note ID, timestamp, raw text};
+\node[box, below=of raw] (select) {4. Select candidate notes\\cue, decision, action, risk, rationale};
+\node[box, below=of select] (annotate) {5. Annotate strategy fragments\\schema-based interpretation};
+\node[box, below=of annotate] (clarify) {6. CTA-style clarification\\cues, thresholds, exceptions, escalation};
+\node[box, below=of clarify] (validate) {7. Operator validation\\accepted, corrected, narrowed, rejected, sensitive};
+\node[box, below=of validate] (model) {8. Model-ready candidate\\OSL, EARS, SysML, rule, or knowledge graph};
 
+\draw[arrow] (scope) -- (training);
 \draw[arrow] (training) -- (raw);
-\draw[arrow] (raw) -- (annotated);
-\draw[arrow] (annotated) -- (validated);
-\draw[arrow] (validated) -- (osl);
+\draw[arrow] (raw) -- (select);
+\draw[arrow] (select) -- (annotate);
+\draw[arrow] (annotate) -- (clarify);
+\draw[arrow] (clarify) -- (validate);
+\draw[arrow] (validate) -- (model);
 
-\node[box, below=of annotated, minimum width=38mm] (schema) {Annotation schema:\\cue, context, action, rationale,\\uncertainty, responsibility};
-\draw[arrow] (schema) -- (annotated);
+\node[side, right=11mm of annotate] (trace) {Traceability:\\source, rationale, status,\\uncertainty, responsibility};
+\draw[arrow] (trace) -- (annotate);
+\draw[arrow] (trace) |- (model);
 
 \end{tikzpicture}
