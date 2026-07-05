@@ -1,0 +1,30 @@
+\section{Background and related work}
+\label{sec:background}
+
+\subsection{Digital Twins and knowledge-intensive engineering}
+
+Digital Twin research in manufacturing has developed around concepts such as virtual representation, physical--digital connection, lifecycle information, simulation, and real-time data integration \cite{grieves2017digital,tao2018digital,fuller2020digital}. Reviews of Digital Twin research show that manufacturing remains one of the dominant application domains, with recurring attention to monitoring, production systems, maintenance, optimisation, and cyber-physical integration \cite{negri2017review,semeraro2021digital}. These contributions are important, but they often describe Digital Twin development from the perspective of data, architecture, and model integration.
+
+For human-in-the-loop manufacturing settings, the knowledge problem is broader. A Digital Twin may need to represent not only the state of a machine, but also why a state matters, who should respond, what alternative interpretations exist, and under what conditions an operator would trust or reject a recommendation. This shifts attention from data availability to knowledge representation. The challenge is consistent with the broader engineering informatics view that engineering work involves knowledge-intensive activities and that computational support must make engineering decision-making more reliable and creative.
+
+\subsection{Operator knowledge and situated expertise}
+
+The knowledge used by operators is often partly tacit. Polanyi's account of tacit knowledge is commonly summarised by the idea that people can know more than they can explicitly tell \cite{polanyi1966tacit}. In manufacturing, this is visible when operators recognise abnormal behaviour through experience-based cues that are difficult to specify in advance. Such cues may include sound, vibration, smell, timing, tool marks, or the relation between a machine response and the current operation.
+
+Operator decision-making also depends on situation awareness and control context. Endsley defines situation awareness as perception of elements in the environment, comprehension of their meaning, and projection of future status \cite{endsley1995situation}. Rasmussen's work on skill-, rule-, and knowledge-based behaviour similarly shows that human action in technical systems cannot be reduced to isolated commands \cite{rasmussen1983skills}. These perspectives suggest that operator support in Digital Twins should preserve the relation between cue, interpretation, action, and uncertainty.
+
+\subsection{Situated learning and apprenticeship-like elicitation}
+
+Situated learning theory argues that learning is embedded in social and material practice rather than detached from context \cite{lave1991situated}. For the present paper, this is important because the researcher is not only interviewing the operator, but is being trained in the practice. The operator explains while pointing, demonstrating, responding, and correcting. The machine, tools, interface, sounds, alarms, and local workarounds become part of the elicitation situation.
+
+This resembles ideas from contextual inquiry and contextual design, where researchers observe and discuss work in the user's actual context \cite{beyer1995apprenticing,beyer1997contextual}. However, the aim here is narrower than full contextual design. The goal is not to redesign a user interface directly, but to capture operator strategies as intermediate knowledge objects for later Digital Twin modelling.
+
+\subsection{Requirements elicitation and intermediate representations}
+
+Requirements engineering distinguishes between stakeholder statements, system requirements, rationale, scenarios, constraints, and formal specifications \cite{vanlamsweerde2009requirements}. A recurring challenge is that early stakeholder knowledge is ambiguous, incomplete, and context-dependent. Moving too quickly from raw statements to formal requirements can erase uncertainty and rationale. Moving too slowly can leave the knowledge unusable for engineering design.
+
+The Notebook-to-OSL method positions the annotated note as an intermediate representation. It is more structured than a raw field note but less formal than an executable rule or language construct. This makes it suitable for preserving situated detail while preparing the material for formalisation.
+
+\subsection{Gap}
+
+The literature provides strong foundations for Digital Twins, human decision-making, situated learning, and contextual elicitation. What is still missing is a practical workflow for transforming training notes from an operator-learning situation into structured strategy fragments that can later be used in Digital Twin modelling. This paper addresses that gap by proposing the Notebook-to-OSL workflow and annotation schema.
