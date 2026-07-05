@@ -1,60 +1,80 @@
 \section{Notebook-to-OSL method}
 \label{sec:method}
 
-Notebook-to-OSL is a workflow for capturing operator strategies during situated training and preparing them for later formalisation. Figure~\ref{fig:notebook-to-osl-workflow} summarises the workflow.
+Notebook-to-OSL is a workflow for capturing operator strategies during situated training and preparing them for later formalisation. The method is grounded in the comparison in Section~\ref{sec:research-design}: contextual inquiry and situated learning define the capture setting; cognitive task analysis defines the clarification logic; requirements engineering and MBSE define traceability, validation, and downstream model-readiness. Figure~\ref{fig:notebook-to-osl-workflow} summarises the workflow.
 
 \begin{figure}[htbp]
     \centering
     \input{figures/workflow.tikz}
-    \caption{Notebook-to-OSL workflow from situated training to candidate strategy model.}
+    \caption{Notebook-to-OSL workflow from situated training to validated model-ready candidate.}
     \label{fig:notebook-to-osl-workflow}
 \end{figure}
 
-The method is organised into seven phases. Table~\ref{tab:workflow} summarises the phases, outputs, and main risks.
+The method is organised into eight phases. Table~\ref{tab:workflow} summarises the phases and outputs. Risks are discussed separately because each risk requires a different mitigation strategy.
 
 \begin{table}[htbp]
 \centering
-\caption{Notebook-to-OSL workflow phases.}
+\caption{Notebook-to-OSL workflow phases and outputs.}
 \label{tab:workflow}
-\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.28\textwidth}X}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}X}
 \toprule
-Phase & Output & Main risk \\
+Phase & Output \\
 \midrule
-1. Prepare & Training focus and consent boundaries & Session becomes too broad or exposes sensitive information. \\
-2. Situated training & Shared understanding of work context & Researcher may misunderstand embodied or implicit actions. \\
-3. Raw note capture & Short laptop notes with timestamps & Notes may be incomplete or ambiguous. \\
-4. Note selection & Relevant candidate notes & Researcher may select only obvious statements. \\
-5. Annotation & Structured strategy fragments & Premature formalisation may erase uncertainty. \\
-6. Validation & Confirmed or revised fragments & Operator feedback may be unavailable or delayed. \\
-7. OSL candidate generation & Candidate language fragments & The generated candidate may overstate what was actually observed. \\
+1. Scope and consent & Training focus, stakeholder roles, and confidentiality boundary. \\
+2. Situated training & Shared understanding of the work setting, task flow, artefacts, and operator explanation. \\
+3. Low-friction note capture & Timestamped digital field notes preserving raw operator phrasing where possible. \\
+4. Note selection & Candidate notes containing cues, decisions, actions, rationale, exceptions, risks, or responsibility. \\
+5. Annotation & Structured operator-strategy fragments. \\
+6. CTA-style clarification & Clarified cues, thresholds, alternatives, novice pitfalls, exceptions, and escalation logic. \\
+7. Operator validation & Accepted, corrected, narrowed, rejected, or sensitive fragments. \\
+8. Model-ready transformation & Candidate artefacts for OSL, EARS-like requirements, SysML v2, rules, or semantic DT structures. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\subsection{Phase 1: Prepare the training situation}
+\subsection{Phase 1: Scope and consent}
 
-Before the session, the researcher defines the scope of the training. The scope may be a machine, operation type, monitoring task, recurring fault, quality concern, or decision point. The operator should know that the goal is not to evaluate their performance, but to understand how they interpret and handle the process. If industrial confidentiality applies, the researcher must define what may be written down, what must be anonymised, and what must not be stored.
+Before the session, the researcher defines a narrow training focus. The focus may be one machine, operation type, monitoring task, recurring abnormality, quality concern, or decision point. The operator should know that the purpose is to understand work practice and reasoning, not to evaluate performance. Confidentiality boundaries should be agreed before note-taking begins. These boundaries should define what may be written down, what must be anonymised, whether artefacts may be photographed, and which details must not be stored. This phase follows the contextual inquiry principle that the field situation should be treated as collaborative and the systems engineering principle that source, constraints, and stakeholder boundaries should be explicit.
 
 \subsection{Phase 2: Participate in situated training}
 
-During the session, the operator teaches the researcher how the work is performed and interpreted. The researcher should ask short clarification questions, but should avoid turning the session into a formal interview. The central value of the situation is that explanations occur while the operator is pointing to artefacts, reacting to machine behaviour, or describing concrete situations.
+During the session, the operator trains the researcher in the work process. The researcher should prioritise following the operator's explanation, observing artefacts, and understanding the task flow. Clarification questions should be short and context-sensitive. Questions such as ``what made that matter?'', ``how would you know this is normal?'', or ``what would make you stop?'' are preferable to abstract design questions. The value of the setting is that explanations occur while the operator points, demonstrates, responds, and corrects.
 
-\subsection{Phase 3: Capture raw notes}
+\subsection{Phase 3: Capture low-friction digital field notes}
 
-The researcher writes short notes on a laptop. The note interface should be simple: a text box, timestamp, optional tag, and save action may be sufficient. The raw note should preserve the operator's phrasing when possible. The researcher should avoid forcing each note into a formal schema during the session because this may interrupt the operator and bias what is captured.
+The researcher writes short digital field notes during the session. The note interface should be minimal: note identifier, timestamp, raw text, optional task phase, optional artefact reference, and save action. The researcher should not attempt to fill the full annotation schema during live work. This separation is deliberate. Contextual inquiry supports capture in context, but both fieldwork and apprenticeship logic imply that excessive structuring during action can disrupt the training and bias what is noticed.
 
 \subsection{Phase 4: Select candidate notes}
 
-After the session, the researcher reviews the raw note set and selects notes that appear relevant to operator strategy. A note is relevant if it describes a cue, interpretation, decision, action, exception, rationale, risk, validation need, or responsibility. Notes that only describe background information may still be useful, but they should not be forced into the strategy schema.
+Immediately after the session, the researcher reviews the raw note log and selects notes that appear relevant to operator strategy. A note is a candidate if it contains or implies a cue, condition, interpretation, decision, action, exception, rationale, risk, validation need, responsibility, trust concern, or escalation path. Notes that provide background context may be retained, but they should not be forced into the strategy schema.
 
 \subsection{Phase 5: Annotate strategy fragments}
 
-Each selected note is annotated using the schema in Section~\ref{sec:schema}. The researcher should explicitly mark uncertainty, exceptions, and validation needs. This is important because the aim is not to convert every operator statement into a rule. Many useful operator statements are probabilistic, experiential, or dependent on material, machine state, tooling, or production context.
+Selected notes are annotated using the schema in Section~\ref{sec:schema}. Annotation is not a mechanical coding exercise. It is an interpretation step that must preserve ambiguity where ambiguity exists. If the researcher is unsure about the cue, condition, action threshold, or rationale, the fragment should be marked as needing clarification rather than being silently completed. This is where requirements engineering principles enter: each fragment should retain a source note, rationale, status, and validation need.
 
-\subsection{Phase 6: Validate with operator or domain expert}
+\subsection{Phase 6: Apply CTA-style clarification}
 
-The annotated fragment should be reviewed with the operator or another domain expert. Validation can confirm the interpretation, correct it, narrow its applicability, or reject it. The validation step is especially important because the researcher is a learner in the training situation and may misunderstand what is routine, exceptional, or context-specific.
+For notes that contain hidden reasoning or ambiguous action logic, the researcher applies a short CTA-inspired clarification step. The aim is not to conduct a full cognitive task analysis. The aim is to recover enough cognitive structure to make the fragment useful and reviewable. Useful prompts include:
 
-\subsection{Phase 7: Generate OSL candidates}
+\begin{itemize}
+    \item What first indicated that this situation was normal or abnormal?
+    \item What would a novice likely miss here?
+    \item What else could this cue mean?
+    \item When would this interpretation be wrong?
+    \item When would the proposed action be unsafe, unnecessary, or too late?
+    \item Who should be contacted if the operator is uncertain?
+\end{itemize}
 
-Validated fragments can be transformed into OSL candidates. In this paper, an OSL candidate is a semi-formal representation that captures the core relation between cue, context, interpretation, action, and validation requirement. It is not yet a complete executable model. The candidate exists to support later language design, SysML mapping, Digital Twin requirements, or decision-support implementation.
+The output of this phase is not a separate interview transcript, but a clarified fragment with explicit uncertainty, alternatives, and validation questions.
+
+\subsection{Phase 7: Validate with operator or domain expert}
+
+The annotated fragment is reviewed with the operator or another domain expert. Validation should not be limited to asking whether the fragment is ``correct''. It should test the interpretation, context, action, threshold, risk, exception, responsibility, and confidentiality status. Each fragment should be classified as \texttt{accepted}, \texttt{corrected}, \texttt{narrowed}, \texttt{rejected}, or \texttt{sensitive}. A corrected fragment may still become model-ready after revision. A narrowed fragment is valid only under a smaller set of conditions than the researcher initially assumed.
+
+\subsection{Phase 8: Transform into model-ready candidates}
+
+Only validated or explicitly bounded fragments should be transformed into model-ready candidates. A model-ready candidate is a semi-structured representation that can feed a later engineering artefact. Depending on the downstream route, the same fragment may become an OSL candidate, an EARS-like requirement, a SysML v2 requirement or behaviour element, a rule template, a dashboard requirement, or a knowledge-graph node-and-relation structure. The important requirement is not that the fragment is fully formal, but that it remains traceable to the raw note, validation outcome, rationale, uncertainty, and responsible actor.
+
+\subsection{Risk mitigation}
+
+The method has predictable risks. Live notes may be incomplete. The researcher may over-interpret a cue. Operators may explain differently when being observed. Confidential information may appear in raw notes. Model-ready candidates may overstate weak evidence. Notebook-to-OSL mitigates these risks through low-friction capture, explicit uncertainty fields, CTA-style clarification, operator validation, confidentiality status, and traceability from candidate model back to raw note.
