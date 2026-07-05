@@ -1,79 +1,128 @@
 \section{Annotation schema}
 \label{sec:schema}
 
-The annotation schema is the central artefact of the method. It defines what must be preserved when a raw note is transformed into a strategy fragment. The schema is not intended to be final or universal. It is a first version that should be refined through empirical use.
+The annotation schema is the central artefact of the method. It defines what must be preserved when a raw note is transformed into an operator-strategy fragment. The schema is not intended to be universal. It is a first version grounded in four literature streams: contextual inquiry, cognitive task analysis, requirements engineering, and MBSE/semantic Digital Twin modelling.
 
-\subsection{Raw note layer}
+\subsection{Schema design rationale}
 
-The raw note layer preserves what was captured during training. It should remain available even after annotation because later interpretation may change. Table~\ref{tab:raw-note-fields} lists the core raw note fields.
+The schema is designed to prevent three common failures. First, raw field notes can become disconnected from their source context. Second, operator statements can be simplified into brittle if--then rules that ignore uncertainty and exceptions. Third, qualitative insights can remain too informal to support later engineering work. Table~\ref{tab:schema-rationale} shows how the main schema groups respond to these failures.
 
 \begin{table}[htbp]
 \centering
-\caption{Raw note fields.}
-\label{tab:raw-note-fields}
-\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\caption{Literature-grounded rationale for the schema groups.}
+\label{tab:schema-rationale}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}p{0.35\textwidth}X}
 \toprule
-Field & Purpose \\
+Schema group & Literature basis & Purpose in Digital Twin development \\
 \midrule
-\texttt{note\_id} & Stable identifier for traceability. \\
-\texttt{timestamp} & Approximate time of capture. \\
-\texttt{raw\_text} & Original note text. \\
-\texttt{setting} & Machine, workstation, operation, or training context. \\
-\texttt{speaker\_role} & Operator, researcher, engineer, maintainer, or other role. \\
-\texttt{confidence\_raw} & Researcher's confidence that the note was understood correctly. \\
+Source and context fields & Contextual inquiry and systems engineering source trace \cite{beyer1995apprenticing,sebokStakeholder,sebokRequirements}. & Preserve where the note came from and the situation in which it made sense. \\
+Cue and interpretation fields & Situation awareness and cognitive task analysis \cite{endsley1995situation,crandall2006workingminds,klein1989critical}. & Separate what the operator perceives from what the cue is interpreted to mean. \\
+Action, rationale, and risk fields & Requirements engineering and stakeholder-needs rationale \cite{vanlamsweerde2009requirements,sebokStakeholder,sebokRequirements}. & Connect operator judgement to intervention logic, consequence, and design need. \\
+Exception and uncertainty fields & Human factors, CTA, and MBSE transformation concerns \cite{rasmussen1983skills,stanik2021acta,sebokRequirements}. & Avoid false precision and preserve conditional applicability. \\
+Validation and model-target fields & Contextual interpretation checks, EARS, SysML v2, and semantic DT modelling \cite{beyer1997contextual,mavin2009ears,omgSysml2024,karabulut2023ontologies}. & Make the fragment reviewable and ready for later formalisation. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\subsection{Strategy annotation layer}
+\subsection{Raw capture layer}
 
-The strategy annotation layer structures the note for later modelling. Table~\ref{tab:annotation-fields} lists the proposed fields.
+The raw capture layer preserves what was captured during training. It should remain available even after annotation because later interpretation may change. Table~\ref{tab:raw-note-fields} lists the core raw note fields.
 
 \begin{table}[htbp]
 \centering
-\caption{Strategy annotation fields.}
+\caption{Raw capture fields.}
+\label{tab:raw-note-fields}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}X}
+\toprule
+Field & Purpose \\
+\midrule
+\texttt{session\_id} & Identifies the training session and supports separation between cases. \\
+\texttt{note\_id} & Stable identifier for traceability from raw note to model-ready candidate. \\
+\texttt{timestamp} & Approximate time of capture, useful for reconstructing sequence. \\
+\texttt{raw\_text} & Original note text, preserving operator phrasing where possible. \\
+\texttt{setting} & Machine, workstation, operation, or training context. \\
+\texttt{task\_phase} & Task phase such as setup, cutting, inspection, alarm response, or maintenance check. \\
+\texttt{speaker\_role} & Operator, researcher, engineer, maintainer, supervisor, or other stakeholder role. \\
+\texttt{artefact\_ref} & Optional reference to interface, tool, part, alarm, document, or observation point. \\
+\texttt{confidentiality\_level} & Marks whether the content is publishable, anonymised, restricted, or excluded. \\
+\texttt{confidence\_raw} & Researcher's confidence that the note was heard and captured correctly. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Operator-strategy fragment layer}
+
+The strategy fragment layer structures the note for later modelling. Table~\ref{tab:annotation-fields} lists the proposed fields.
+
+\begin{table}[htbp]
+\centering
+\caption{Operator-strategy fragment fields.}
 \label{tab:annotation-fields}
-\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}X}
 \toprule
 Field & Purpose \\
 \midrule
 \texttt{cue} & What the operator notices, such as sound, vibration, alarm, timing, tool behaviour, or visual mark. \\
-\texttt{condition} & Situation in which the cue matters. \\
-\texttt{interpretation} & What the cue may indicate. \\
-\texttt{action} & What the operator does or considers doing. \\
+\texttt{condition} & Situation in which the cue matters, including material, operation, machine state, or task phase. \\
+\texttt{interpretation} & What the cue may indicate according to the operator's experience. \\
+\texttt{action} & What the operator does, considers doing, or recommends. \\
 \texttt{rationale} & Why the action makes sense. \\
 \texttt{exception} & When the interpretation or action does not apply. \\
 \texttt{uncertainty} & What is unknown, context-dependent, probabilistic, or disputed. \\
 \texttt{risk} & Possible consequence if the cue is ignored or misinterpreted. \\
-\texttt{validation\_need} & What must be checked with the operator or another expert. \\
+\texttt{trust\_concern} & Conditions under which the operator would distrust an alarm, recommendation, or automatic interpretation. \\
+\texttt{validation\_question} & Question that must be checked with the operator or another expert. \\
 \texttt{responsible\_actor} & Who acts, decides, validates, or escalates. \\
 \texttt{escalation\_path} & Who is contacted if the situation cannot be resolved locally. \\
-\texttt{candidate\_osl\_type} & Candidate target type, such as cue, rule, strategy, intervention, or validation gate. \\
+\texttt{candidate\_model\_type} & Candidate target type, such as strategy, cue, rule, requirement, validation gate, explanation need, SysML element, or graph relation. \\
+\texttt{source\_trace} & Link to raw note, session, operator validation, and later model candidate. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Status model}
 
-Each note should have a status. The status prevents the repository from mixing raw, interpreted, validated, and formalised material. Table~\ref{tab:status-model} lists the proposed status values.
+Each note and fragment should have a status. The status prevents the repository from mixing raw, interpreted, validated, rejected, sensitive, and formalised material. Table~\ref{tab:status-model} lists the proposed status values.
 
 \begin{table}[htbp]
 \centering
 \caption{Status values for note transformation.}
 \label{tab:status-model}
-\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}X}
 \toprule
 Status & Meaning \\
 \midrule
 \texttt{raw} & Captured during training, not yet interpreted. \\
+\texttt{selected} & Chosen for annotation because it appears relevant to operator strategy. \\
 \texttt{annotated} & Researcher has added structured fields. \\
+\texttt{needs-clarification} & Requires CTA-style probing or additional context before validation. \\
 \texttt{needs-validation} & Requires operator or domain expert review. \\
-\texttt{validated} & Confirmed or corrected by operator/domain expert. \\
-\texttt{formalized} & Converted into an OSL candidate or related modelling artefact. \\
-\texttt{discarded} & Removed from the modelling pipeline because it is unclear, duplicate, irrelevant, or unsafe to use. \\
+\texttt{accepted} & Confirmed by operator/domain expert. \\
+\texttt{corrected} & Revised after operator/domain expert feedback. \\
+\texttt{narrowed} & Valid only under a narrower condition than initially assumed. \\
+\texttt{rejected} & Rejected by operator/domain expert or judged unsupported. \\
+\texttt{sensitive} & Contains information that should not be published or used outside the agreed boundary. \\
+\texttt{model-ready} & Ready to be transformed into an OSL candidate, requirement, SysML element, rule, or semantic structure. \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\subsection{Validation protocol}
+
+Validation operationalises the interpretive check required by contextual inquiry and the source-trace discipline required by requirements engineering. For each annotated fragment, the operator or domain expert should be asked:
+
+\begin{enumerate}
+    \item Is this interpretation of the note correct?
+    \item What important context or condition is missing?
+    \item Would this cue mean the same thing for another material, tool state, operation, or machine condition?
+    \item What would a novice likely misunderstand here?
+    \item When would this action be inappropriate, unsafe, unnecessary, or too late?
+    \item What exception or alternative explanation should be recorded?
+    \item Who is actually responsible for acting, validating, or escalating?
+    \item Could this fragment be useful in a Digital Twin as an alert, explanation, validation gate, or recommendation?
+    \item Should any part of this note be treated as sensitive and excluded from publication or tooling?
+    \item What confidence should be assigned to the fragment as written?
+\end{enumerate}
 
 \subsection{Why uncertainty is a first-class field}
 
