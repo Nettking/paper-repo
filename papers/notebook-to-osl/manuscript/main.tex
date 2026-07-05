@@ -1,0 +1,84 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usetikzlibrary{arrows.meta,positioning,fit}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black
+}
+
+\lstdefinestyle{osl}{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  keepspaces=true
+}
+
+\journal{Advanced Engineering Informatics}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{From Apprenticeship Notes to Operator Strategy Models: Situated Elicitation for Digital Twin Development}
+
+\author[hiost]{Martin Arthur Andersen\corref{cor1}}
+\ead{nks.rap@gmail.com}
+\cortext[cor1]{Corresponding author.}
+
+\author[hiost]{Co-author Name}
+
+\address[hiost]{Østfold University College, Halden, Norway}
+
+\begin{abstract}
+Digital Twin development in manufacturing depends on operational knowledge that is rarely available in machine documentation, sensor streams, or formal process descriptions alone. Operators interpret sounds, vibrations, alarms, tooling behaviour, workarounds, and exceptions as part of situated practice, yet these interpretations are often lost before they can inform Digital Twin requirements or models. This paper proposes a tool-supported situated elicitation method for capturing operator strategies during apprenticeship-like CNC operator training. In the method, a researcher or engineer is trained by an operator while taking short laptop notes. The notes remain raw during the session to avoid interrupting the training situation. Afterward, the notes are selected, annotated, and transformed into candidate fragments for an Operator Strategy Language (OSL). The paper contributes a workflow from raw field note to structured strategy fragment, an annotation schema covering cues, conditions, interpretations, actions, rationale, uncertainty, exceptions, responsibility, and validation needs, and an illustrative CNC case showing how operator statements can be prepared for later formalisation. The contribution is positioned as an intermediate knowledge layer between informal situated practice and formal Digital Twin artefacts. The paper argues that such an intermediate layer is necessary when Digital Twins are expected to support human-in-the-loop monitoring, diagnosis, intervention, and decision-making in manufacturing.
+\end{abstract}
+
+\begin{keyword}
+Digital Twin \sep Operator strategy \sep Situated elicitation \sep CNC manufacturing \sep Knowledge representation \sep Requirements elicitation \sep Human-in-the-loop systems
+\end{keyword}
+
+\end{frontmatter}
+
+\input{sections/01_introduction}
+\input{sections/02_background}
+\input{sections/03_research_design}
+\input{sections/04_method}
+\input{sections/05_annotation_schema}
+\input{sections/06_illustrative_case}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this first manuscript draft, the authors used ChatGPT to support initial structuring, wording, and LaTeX drafting. The authors must review, revise, verify, and take full responsibility for the final content before submission.
+
+\section*{CRediT authorship contribution statement}
+To be completed before submission.
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. This statement should be checked and revised before submission.
+
+\section*{Funding}
+Funding information should be added before submission. If no specific funding applies, use the journal's recommended no-funding statement.
+
+\section*{Data availability}
+No industrial data are included in this first draft. Any future empirical material should be anonymised and cleared with the industrial partner before publication.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}
