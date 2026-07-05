@@ -1,0 +1,80 @@
+\section{Annotation schema}
+\label{sec:schema}
+
+The annotation schema is the central artefact of the method. It defines what must be preserved when a raw note is transformed into a strategy fragment. The schema is not intended to be final or universal. It is a first version that should be refined through empirical use.
+
+\subsection{Raw note layer}
+
+The raw note layer preserves what was captured during training. It should remain available even after annotation because later interpretation may change. Table~\ref{tab:raw-note-fields} lists the core raw note fields.
+
+\begin{table}[htbp]
+\centering
+\caption{Raw note fields.}
+\label{tab:raw-note-fields}
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\toprule
+Field & Purpose \\
+\midrule
+\texttt{note\_id} & Stable identifier for traceability. \\
+\texttt{timestamp} & Approximate time of capture. \\
+\texttt{raw\_text} & Original note text. \\
+\texttt{setting} & Machine, workstation, operation, or training context. \\
+\texttt{speaker\_role} & Operator, researcher, engineer, maintainer, or other role. \\
+\texttt{confidence\_raw} & Researcher's confidence that the note was understood correctly. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Strategy annotation layer}
+
+The strategy annotation layer structures the note for later modelling. Table~\ref{tab:annotation-fields} lists the proposed fields.
+
+\begin{table}[htbp]
+\centering
+\caption{Strategy annotation fields.}
+\label{tab:annotation-fields}
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\toprule
+Field & Purpose \\
+\midrule
+\texttt{cue} & What the operator notices, such as sound, vibration, alarm, timing, tool behaviour, or visual mark. \\
+\texttt{condition} & Situation in which the cue matters. \\
+\texttt{interpretation} & What the cue may indicate. \\
+\texttt{action} & What the operator does or considers doing. \\
+\texttt{rationale} & Why the action makes sense. \\
+\texttt{exception} & When the interpretation or action does not apply. \\
+\texttt{uncertainty} & What is unknown, context-dependent, probabilistic, or disputed. \\
+\texttt{risk} & Possible consequence if the cue is ignored or misinterpreted. \\
+\texttt{validation\_need} & What must be checked with the operator or another expert. \\
+\texttt{responsible\_actor} & Who acts, decides, validates, or escalates. \\
+\texttt{escalation\_path} & Who is contacted if the situation cannot be resolved locally. \\
+\texttt{candidate\_osl\_type} & Candidate target type, such as cue, rule, strategy, intervention, or validation gate. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Status model}
+
+Each note should have a status. The status prevents the repository from mixing raw, interpreted, validated, and formalised material. Table~\ref{tab:status-model} lists the proposed status values.
+
+\begin{table}[htbp]
+\centering
+\caption{Status values for note transformation.}
+\label{tab:status-model}
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\toprule
+Status & Meaning \\
+\midrule
+\texttt{raw} & Captured during training, not yet interpreted. \\
+\texttt{annotated} & Researcher has added structured fields. \\
+\texttt{needs-validation} & Requires operator or domain expert review. \\
+\texttt{validated} & Confirmed or corrected by operator/domain expert. \\
+\texttt{formalized} & Converted into an OSL candidate or related modelling artefact. \\
+\texttt{discarded} & Removed from the modelling pipeline because it is unclear, duplicate, irrelevant, or unsafe to use. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Why uncertainty is a first-class field}
+
+The schema treats uncertainty as a first-class field because operator strategies are often conditional. For example, a sound may indicate tool wear in one material but be normal in another. A vibration pattern may be acceptable during roughing but problematic during finishing. A Digital Twin that ignores these distinctions can create false alarms or misleading recommendations. Preserving uncertainty also supports later validation because it makes clear which parts of a fragment are confirmed and which parts remain interpretive.
