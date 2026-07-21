@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "working_directory": "papers/notebook-to-osl/manuscript",
+  "tex_file": "main.tex",
+  "pdf_file": "main.pdf",
+  "latexmk_args": [
+    "-pdf",
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-file-line-error"
+  ]
+}
