@@ -8,7 +8,10 @@ Before making a conceptual, methodological, evidence, framing, or submission-sta
 2. Read `Nettking/phd-research/dependency-rules.yaml`.
 3. Check whether the change affects `Nettking/systems-paper` or `Nettking/evo-repo`.
 4. Do not silently propagate an uncertain semantic change to another paper.
-5. Update the central status and PhD diary when required by the dependency rules.
+5. Update `Nettking/phd-research/status/current-status.yaml` when the paper state changes.
+6. Add meaningful research progress to the relevant monthly LaTeX file in `Nettking/PhD-Diary` when required by the dependency rules.
+
+Do not create a separate diary inside this repository or inside `phd-research`.
 
 This repository owns:
 
