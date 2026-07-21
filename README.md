@@ -8,6 +8,8 @@ The repository is organized around paper folders. Each folder should contain the
 
 ```text
 paper-repo/
+├── Makefile
+├── paper-build.json
 ├── papers/
 │   └── notebook-to-osl/
 │       ├── README.md
@@ -17,13 +19,42 @@ paper-repo/
 │       ├── knowledge-base.md
 │       ├── capture-schema.md
 │       ├── outline.md
-│       └── notes/
-│           └── README.md
+│       ├── notes/
+│       │   └── README.md
+│       └── manuscript/
+│           ├── main.tex
+│           ├── highlights.tex
+│           ├── references.bib
+│           ├── figures/
+│           └── sections/
 └── templates/
     └── paper-folder/
         ├── README.md
         └── paper.yaml
 ```
+
+## Build the current paper
+
+From the repository root:
+
+```bash
+make paper
+```
+
+Or directly:
+
+```bash
+cd papers/notebook-to-osl/manuscript
+latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+```
+
+The generated manuscript is:
+
+```text
+papers/notebook-to-osl/manuscript/main.pdf
+```
+
+The root-level `paper-build.json` provides the same build information to the multi-paper build tool in `Nettking/phd-research`. That tool can pull the latest repository version and collect this PDF together with the other PhD papers.
 
 ## Paper folder workflow
 
@@ -38,7 +69,7 @@ Each paper folder should answer four questions:
 
 | Folder | Working title | Status |
 |---|---|---|
-| `papers/notebook-to-osl` | From Apprenticeship Notes to Operator Strategy Models | Idea captured |
+| `papers/notebook-to-osl` | From Situated Field Notes to Operator Strategy Models | Strengthened first draft; empirical work still required |
 
 ## Suggested status values
 
