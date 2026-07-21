@@ -22,3 +22,11 @@ This repository owns:
 - model-readiness criteria for captured fragments.
 
 `Nettking/systems-paper` owns the current OSL representation proposal. `Nettking/evo-repo` owns the emerging evolution and governance research. Keep these contribution boundaries explicit.
+
+## PDF build contract
+
+- Keep the root `paper-build.json` aligned with the current manuscript entry file and generated PDF.
+- The canonical local check is `make paper`.
+- After manuscript, bibliography, figure, or template changes, confirm that `papers/notebook-to-osl/manuscript/main.pdf` builds without unresolved inputs or citations.
+- Do not commit generated build-cache files merely to make the central builder succeed.
+- `Nettking/phd-research/scripts/build_papers.py` must be able to clone the repository and build it without relying on files outside the repository.
