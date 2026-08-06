@@ -1,11 +1,11 @@
 \section{Research design and scope}
 \label{sec:research-design}
 
-This paper is written as a method paper. The purpose is to define and justify a repeatable workflow for transforming situated operator-training notes into model-ready knowledge fragments for Digital Twin development. The method is intended for early-stage manufacturing projects where operator reasoning is important, but where the Digital Twin model, requirements, and decision-support logic have not yet been formalised.
+This paper is written as a method paper with an explicit empirical evaluation design. Its purpose is to define and justify a repeatable workflow for comparing situated and interview-based elicitation, tracing changes introduced by operator validation, and assessing whether validated fragments can be transformed into semantically coherent OSL representations. The method is intended for early-stage manufacturing projects where operator reasoning is important, but where Digital Twin requirements, models, and decision-support logic have not yet been formalised.
 
 \subsection{Methodological position}
 
-Notebook-to-OSL is a hybrid method rather than a new method family. It combines three layers. The front end is contextual and apprenticeship-based: the researcher learns in the real work setting and captures low-friction digital field notes. The clarification layer is cognitive-task-analysis-inspired: selected notes are probed for cues, difficult decisions, expert--novice differences, exceptions, and escalation logic. The back end is requirements- and MBSE-oriented: validated fragments are given traceability, status, rationale, and a path toward formal model representations.
+Notebook-to-OSL is a hybrid method rather than a new method family. It combines three layers. The elicitation layer is contextual and apprenticeship-based, with a conventional post-session interview used as a comparison source. The interpretation layer is cognitive-task-analysis-inspired: selected notes are examined for cues, difficult decisions, alternatives, expert--novice differences, exceptions, and escalation logic. The transformation layer is requirements- and MBSE-oriented: validated fragments are given traceability, status, rationale, and an explicit path toward formal representation.
 
 Table~\ref{tab:method-family-comparison} summarises how the main literature streams contribute to the method.
 
@@ -17,77 +17,99 @@ Table~\ref{tab:method-family-comparison} summarises how the main literature stre
 \toprule
 Method family & Contribution to Notebook-to-OSL & Limitation if used alone \\
 \midrule
-Contextual inquiry and contextual design & Captures work in context, preserves operator phrasing, artefacts, flow, and interpretation checks \cite{beyer1995apprenticing,beyer1997contextual}. & Does not fully specify how to capture hidden cognitive thresholds or model-ready fragments. \\
-Situated learning and cognitive apprenticeship & Justifies training as an elicitation setting where expert reasoning is demonstrated, coached, articulated, and reflected upon \cite{lave1991situated,collins1989cognitive}. & Provides theoretical framing but not a complete data transformation protocol. \\
-Cognitive task analysis & Surfaces cues, difficult judgments, expert--novice differences, anomalies, and decision points \cite{crandall2006workingminds,klein1989critical,stanik2021acta}. & Can be intrusive during live work if applied as a full interview protocol. \\
-Requirements engineering and SEBoK & Adds traceability, source, rationale, risk, status, ownership, and validation principles \cite{vanlamsweerde2009requirements,sebokStakeholder,sebokRequirements}. & Operates at a higher abstraction than situated shop-floor cues. \\
-MBSE and semantic DT modelling & Provides downstream targets such as SysML v2, controlled requirements, rules, and knowledge graphs \cite{mavin2009ears,omgSysml2024,karabulut2023ontologies,listl2024knowledge}. & Can over-formalise knowledge before it is validated. \\
+Contextual inquiry and contextual design & Captures work in context, preserves operator phrasing, artefacts, flow, and interpretation checks \cite{beyer1995apprenticing,beyer1997contextual}. & Does not by itself establish what situated elicitation adds relative to a conventional interview. \\
+Situated learning and cognitive apprenticeship & Justifies training as an elicitation setting where expert reasoning is demonstrated, coached, articulated, and reflected upon \cite{lave1991situated,collins1989cognitive}. & Provides theoretical framing but not a complete comparison or transformation protocol. \\
+Cognitive task analysis & Surfaces cues, difficult judgments, expert--novice differences, anomalies, alternatives, and decision points \cite{crandall2006workingminds,klein1989critical,stanik2021acta}. & Can be intrusive during live work if applied as a full interview protocol. \\
+Requirements engineering and SEBoK & Adds traceability, source, rationale, risk, status, ownership, and validation principles \cite{vanlamsweerde2009requirements,sebokStakeholder,sebokRequirements}. & Operates after stakeholder knowledge has been elicited and may conceal interpretation changes if provenance is weak. \\
+MBSE and semantic DT modelling & Provides downstream targets such as SysML v2, controlled requirements, rules, and knowledge graphs \cite{mavin2009ears,omgSysml2024,karabulut2023ontologies,listl2024knowledge}. & Can over-formalise knowledge before it is reviewed and semantically qualified. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\subsection{Design objective}
+\subsection{Research-question alignment}
 
-The design objective is to support the transformation of situated training notes into structured operator-strategy fragments. The transformation should satisfy six requirements:
+The three research questions define the evidence that the study must collect and the claims it may make. Table~\ref{tab:rq-alignment} maps each question to its data and analysis.
+
+\begin{table}[htbp]
+\centering
+\caption{Alignment between research questions, evidence, and analysis.}
+\label{tab:rq-alignment}
+\begin{tabularx}{\textwidth}{p{0.09\textwidth}p{0.30\textwidth}p{0.28\textwidth}X}
+\toprule
+RQ & Required evidence & Analysis & Permitted conclusion \\
+\midrule
+RQ1 & Separate situated-training notes and post-session interview material covering the same task scope. & Compare which observations, contexts, interpretations, actions, exceptions, risks, and uncertainties occur in each source. & Whether and how the two elicitation settings produce different operator-strategy knowledge in the studied case. \\
+RQ2 & Initial researcher annotations and operator-review records for the same fragments. & Trace accepted, corrected, narrowed, rejected, and sensitive interpretations and characterise the changes. & How operator review changes the researcher's interpretation and which categories are most vulnerable to misinterpretation. \\
+RQ3 & Validated fragments, candidate OSL representations, transformation decisions, and unresolved gaps. & Assess traceability, semantic coherence, information loss, explicit incompleteness, and unsupported mappings. & Which validated fragments can be represented coherently, which remain incomplete, and where the representation requires refinement. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+This alignment prevents the paper from treating the workflow, schema, and OSL example as independent contributions. They are research instruments used to answer the three questions.
+
+\subsection{Design requirements}
+
+The workflow should satisfy six requirements:
 
 \begin{enumerate}[label=R\arabic*.]
-    \item \textbf{Low friction during training.} The researcher must be able to capture notes without interrupting the operator's explanation or the flow of the training situation.
-    \item \textbf{Context preservation.} The method must preserve enough information about task phase, setting, artefact, and operator role to make later interpretation meaningful.
-    \item \textbf{Traceability.} Each structured fragment should remain linked to its raw note, source, session, validation status, and downstream candidate model.
-    \item \textbf{Preservation of uncertainty.} The method should not force uncertain, context-dependent, or disputed observations into overly precise rules.
-    \item \textbf{Validation before formalisation.} Operator or domain-expert review should occur before a fragment is treated as model-ready.
-    \item \textbf{Model-readiness.} The annotated fragment should contain enough structure to support later transformation into OSL, EARS-like requirements, SysML v2 elements, rules, knowledge-graph structures, or other Digital Twin artefacts.
+    \item \textbf{Low friction during training.} The researcher must capture notes without interrupting the operator's explanation or the flow of the training situation.
+    \item \textbf{Comparable sources.} Situated notes and post-session interview material must cover the same task scope and remain distinguishable during analysis.
+    \item \textbf{Traceable interpretation.} Each structured fragment must remain linked to its raw source, the researcher's initial interpretation, operator-review outcome, and downstream representation.
+    \item \textbf{Preservation of uncertainty.} The method must not force uncertain, context-dependent, alternative, or disputed observations into overly precise rules.
+    \item \textbf{Validation before formalisation.} Operator or domain-expert review must occur before a fragment is treated as model-ready.
+    \item \textbf{Assessable model-readiness.} The transformation must expose whether context, interpretation, response logic, uncertainty, provenance, and unresolved gaps can be represented coherently rather than merely producing syntactically plausible output.
 \end{enumerate}
 
 \subsection{Unit of analysis}
 
-The primary unit of analysis is the \emph{operator-strategy fragment}. A fragment is derived from one or more raw notes and contains the relation between an operational cue, context, interpretation, possible action, rationale, exception, uncertainty, risk, responsibility, and validation state. A fragment may later become a strategy, rule, exception, validation gate, dashboard requirement, explanation requirement, escalation path, or modelling element.
+The primary unit of analysis is the \emph{operator-strategy fragment}. A fragment is derived from one or more raw notes or interview statements and relates an operational observation to context, interpretation, possible responses, rationale, exception, uncertainty, risk, responsibility, and validation state. The analysis also preserves the source-level distinction needed for RQ1, the version history needed for RQ2, and the transformation record needed for RQ3.
 
 \subsection{Pilot study protocol}
 
-A full empirical version of this paper should evaluate the method through a small but auditable pilot. The pilot should not aim to prove that a complete Digital Twin improves production performance. Instead, it should test whether the method can produce validated, traceable, and model-ready fragments from situated operator training.
+A full empirical version of this paper should evaluate the method through a small but auditable pilot. The pilot should not aim to prove that a complete Digital Twin improves production performance. It should test the comparative, interpretive, and representational questions defined above.
 
 The recommended pilot protocol is:
 
 \begin{enumerate}
-    \item Define one narrow training scope, such as one CNC monitoring task, one recurring abnormality, or one setup/inspection episode.
+    \item Define one narrow task scope, such as one CNC monitoring task, recurring abnormality, or setup/inspection episode.
     \item Agree on consent and confidentiality boundaries, including what may be written, photographed, stored, anonymised, or excluded.
-    \item Conduct one situated training session where the operator teaches the researcher in the real or simulated work setting.
-    \item Capture low-friction digital field notes with note identifiers, timestamps, short raw text, setting, and optional task phase.
-    \item Review notes immediately after the session and select those that contain cues, interpretations, actions, exceptions, risks, responsibility, or trust concerns.
-    \item Annotate selected notes using the schema in Section~\ref{sec:schema}.
-    \item Apply CTA-style clarification questions to ambiguous or cognitively rich fragments.
-    \item Validate the annotated fragments with the operator or a domain expert.
-    \item Transform validated fragments into model-ready candidates and report the transformation metrics.
+    \item Conduct a situated training session where the operator teaches the researcher in the real or simulated work setting.
+    \item Capture low-friction digital field notes with identifiers, timestamps, raw text, setting, and optional task phase.
+    \item Conduct a short post-session interview covering the same task scope without showing the situated notes as prompts.
+    \item Keep situated and interview material separate, then code both with the same initial categories to answer RQ1.
+    \item Create an initial researcher annotation for selected fragments and preserve that version.
+    \item Apply CTA-style clarification where cues, alternatives, thresholds, or action logic remain ambiguous.
+    \item Review the annotations with the operator and record each acceptance, correction, narrowing, rejection, or sensitivity decision to answer RQ2.
+    \item Transform validated fragments into candidate OSL representations and record successful mappings, information loss, explicit gaps, and unsupported mappings to answer RQ3.
 \end{enumerate}
 
-\subsection{Expected empirical material and metrics}
+\subsection{Empirical material and metrics}
 
-Table~\ref{tab:empirical-material} summarises the minimum material needed for a credible pilot study.
+Table~\ref{tab:empirical-material} summarises the minimum material needed for the pilot.
 
 \begin{table}[htbp]
 \centering
-\caption{Minimum empirical material for a pilot study.}
+\caption{Minimum empirical material and its role in the research questions.}
 \label{tab:empirical-material}
-\begin{tabularx}{\textwidth}{p{0.28\textwidth}X}
+\begin{tabularx}{\textwidth}{p{0.27\textwidth}p{0.12\textwidth}X}
 \toprule
-Material & Purpose \\
+Material & RQ & Purpose \\
 \midrule
-Training session description & Establish the industrial context, task scope, operator role, and confidentiality boundary. \\
-Raw note log & Provide the unstructured material captured during training before interpretation. \\
-Annotated fragment set & Show how raw notes are transformed using the schema. \\
-Clarification log & Record CTA-style questions and answers for ambiguous or cognitively rich fragments. \\
-Validation feedback & Check whether the researcher's interpretation matches operator intent and operational reality. \\
-Model-ready candidate set & Demonstrate transformation potential for OSL, requirements, SysML, rules, or knowledge graphs. \\
-Reflection log & Document researcher bias, uncertainty, missed context, and methodological limitations. \\
+Situated training note log & RQ1 & Preserve knowledge captured while the operator demonstrates and explains work in context. \\
+Post-session interview record & RQ1 & Provide a conventional elicitation comparison over the same task scope. \\
+Initial annotation set & RQ2 & Preserve the researcher's interpretation before operator review. \\
+Clarification and operator-review log & RQ2 & Record why interpretations were accepted, corrected, narrowed, rejected, or restricted. \\
+Validated fragment set & RQ2--RQ3 & Establish the reviewed knowledge eligible for formal transformation. \\
+Candidate OSL representations and mapping log & RQ3 & Show which semantic structures can be represented and which gaps remain. \\
+Reflection log & All & Document researcher bias, missed context, methodological deviations, and confidentiality decisions. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The analysis should report descriptive transformation metrics: number of raw notes captured, number selected for annotation, number requiring clarification, number accepted, corrected, narrowed, rejected, or marked sensitive during validation, and number transformed into model-ready candidates. The pilot can be small. For example, one operator, one training scenario, 20--40 raw notes, 8--15 annotated fragments, and 4--8 validated candidates would be sufficient to demonstrate feasibility, while larger or multi-site studies would be needed to make stronger generalisation claims.
+For RQ1, the analysis should report source-exclusive and shared knowledge elements rather than only total note counts. For RQ2, it should report the number and type of interpretation changes and provide qualitative examples of consequential corrections. For RQ3, it should report the proportion of validated fragments that can be represented with traceability and semantic coherence, the proportion that remain explicitly incomplete, and the recurring reasons why transformation fails or loses information. These measures are descriptive and case-bounded; they do not establish general superiority, operational correctness, or safety.
 
 \subsection{Scope and boundaries}
 
-The paper does not claim to deliver a complete Operator Strategy Language. It also does not claim to implement a complete Digital Twin. Instead, it focuses on the intermediate step between situated operator learning and formal modelling. This boundary is important because attempting to deliver field method, software tool, full language, and Digital Twin implementation in the same paper would weaken the contribution.
+The paper does not claim to deliver a complete Operator Strategy Language or a complete Digital Twin. It focuses on the intermediate research problem between situated operator learning and formal modelling. RQ1 is limited to the elicitation settings studied. RQ2 evaluates interpretation change, not universal operator agreement. RQ3 evaluates representation adequacy for the validated fragments, not runtime matching, automatic recommendation, operational correctness, or safety.
 
-The intended contribution is therefore methodological. The tool is treated as a research instrument that supports the method. The model-ready candidate is treated as a target representation that demonstrates why the annotation is useful. OSL remains one possible downstream formalisation route, alongside requirements, rules, SysML v2, and semantic Digital Twin models.
+The tool is treated as a research instrument that supports capture, versioning, review, and transformation. OSL is treated as the formal target needed to examine RQ3. Neither the tool nor the language is validated merely because the workflow can produce an artefact.

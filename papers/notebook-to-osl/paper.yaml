@@ -9,7 +9,7 @@ short_name: Notebook-to-OSL
 paper_type: journal-first-method-paper
 primary_domain: Digital Twins for manufacturing
 case_context: CNC operator training
-method_positioning: hybrid elicitation-and-transformation method
+method_positioning: comparative situated-elicitation and transformation method
 theoretical_foundations:
   - contextual inquiry
   - situated learning
@@ -19,11 +19,9 @@ theoretical_foundations:
   - model-based systems engineering
   - semantic Digital Twin knowledge representation
 main_contribution:
-  - literature-grounded situated elicitation workflow
-  - note-to-strategy annotation schema
-  - CTA-style clarification and operator validation protocol
-  - traceable transformation from raw notes to model-ready candidates
-  - illustrative CNC case
+  - comparative design for situated training and post-session interview elicitation
+  - traceable note interpretation and operator-validation workflow
+  - model-readiness assessment for transforming validated fragments into OSL representations
 primary_target_venue: Advanced Engineering Informatics
 backup_venues:
   - Computers in Industry
@@ -44,18 +42,19 @@ keywords:
   - Operator Strategy Language
   - human-in-the-loop systems
 research_questions:
-  - "How can situated operator training be used as an elicitation setting for capturing operator strategies in Digital Twin development?"
-  - "How can low-friction digital field notes from CNC operator training be transformed into traceable, validated, model-ready operator-strategy fragments?"
-  - "Which annotation categories are needed to preserve context, cue interpretation, action logic, uncertainty, rationale, risk, responsibility, and validation needs during that transformation?"
+  - "How does situated CNC operator training differ from a conventional post-session interview in the operator-strategy knowledge it elicits?"
+  - "How does operator validation change the researcher's interpretation of captured notes?"
+  - "To what extent can validated operator-strategy fragments be transformed into traceable, semantically coherent OSL representations, and what gaps remain?"
 manuscript:
   path: papers/notebook-to-osl/manuscript/main.tex
   format: LaTeX
-  status: strengthened-first-draft
+  status: research-question-realigned-draft
 needed_next:
-  - compile LaTeX and fix any errors from the expanded references and tables
+  - compile LaTeX and inspect the research-question realignment
   - replace placeholder co-author information
   - verify all references and DOIs manually before submission
+  - define the situated-training and post-session-interview comparison protocol
   - add empirical material from actual or simulated CNC training
-  - add operator/domain-expert validation results
+  - record initial researcher interpretations and operator-validation changes
+  - assess validated fragments against explicit OSL model-readiness criteria
   - decide what empirical material can be used without exposing sensitive industrial data
-  - align OSL syntax with the separate OSL paper when that language stabilizes
